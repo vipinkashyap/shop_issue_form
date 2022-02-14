@@ -205,7 +205,9 @@ class _IssueFormState extends State<IssueForm> {
 
                         UploadTask task = FirebaseStorage.instance
                             .ref()
-                            .child("files/$fileName")
+                            .child(
+                                "files/$fileName") // Code failing on this line
+                            // refer this answer - https://stackoverflow.com/questions/65048371/fire-storage-exception-firebase-storage-unauthorized-user-is-not-authorized-t
                             .putData(file!);
 
                         task.snapshotEvents.listen((event) {
