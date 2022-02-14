@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
@@ -8,7 +7,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:form_builder_extra_fields/form_builder_extra_fields.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:shop_issue_form_flutter/storage.dart';
 
 class IssueForm extends StatefulWidget {
   const IssueForm({Key? key}) : super(key: key);
@@ -194,7 +192,7 @@ class _IssueFormState extends State<IssueForm> {
                     ),
                     onPressed: () => _handleSubmit(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   ElevatedButton(
@@ -220,7 +218,7 @@ class _IssueFormState extends State<IssueForm> {
                         });
                       }
                     },
-                    child: Text('UPLOAD'),
+                    child: const Text('UPLOAD'),
                   )
 //                   ElevatedButton(
 //                       onPressed: () async {
