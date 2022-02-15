@@ -5,6 +5,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:form_builder_extra_fields/form_builder_extra_fields.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../services/services.dart';
+
 class IssueForm extends StatefulWidget {
   const IssueForm({Key? key}) : super(key: key);
 
@@ -33,7 +35,7 @@ class _IssueFormState extends State<IssueForm> {
     _saveButtonTapped = true;
     setState(() => _buttonText = 'WRITING TO DATABASE');
     if (_fbKey.currentState!.saveAndValidate()) {
-      FirebaseFirestore.instance.collection('isues').doc().set({
+      StorageApi().writeDataToCloudFireStore({
         'epcContractor': _fbKey.currentState!.value['epc_contractor'] as String,
         'customer': _fbKey.currentState!.value['customer'] as String,
         'siteLocation': _fbKey.currentState!.value['site_location'] as String,
