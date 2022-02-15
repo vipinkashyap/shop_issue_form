@@ -164,8 +164,9 @@ class _IssueFormState extends State<IssueForm> {
                     FormBuilderFilePicker(
                       focusNode: _filePickerFocus,
                       name: 'attachments',
-                      previewImages: false,
-                      allowMultiple: true,
+                      previewImages: true,
+                      allowMultiple: false,
+                      maxFiles: 1,
                       onFileLoading: (status) =>
                           const CircularProgressIndicator(),
                     ),

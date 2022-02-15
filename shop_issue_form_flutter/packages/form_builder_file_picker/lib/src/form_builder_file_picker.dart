@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:file_picker/file_picker.dart';
@@ -245,8 +244,10 @@ class _FormBuilderFilePickerState
                       child: (imageFileExts.contains(
                                   files[index].extension!.toLowerCase()) &&
                               widget.previewImages)
-                          ? Image.file(File(files[index].path!),
-                              fit: BoxFit.cover)
+                          ? Image.memory(
+                              files[index].bytes!,
+                              fit: BoxFit.cover,
+                            ) //Image.file(File(files[index].path!),
                           : Container(
                               alignment: Alignment.center,
                               color: theme.primaryColor,
