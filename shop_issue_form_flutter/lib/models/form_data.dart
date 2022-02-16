@@ -70,7 +70,7 @@ class IssueForm {
             'id cannot be null and should be empty'),
         id = id ?? _uuid.v4(),
         serviceCostAgainstInvoiceValue =
-            serviceCostAgainstInvoiceValue ?? cost / invoiceValue ?? 0.0;
+            serviceCostAgainstInvoiceValue ?? cost / invoiceValue;
 }
 
 class IssueList extends StateNotifier<List<IssueForm>> {
