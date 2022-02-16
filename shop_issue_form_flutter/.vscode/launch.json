@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "shop_issue_form_flutter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "shop_issue_form_flutter (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "form_builder_file_picker",
+            "cwd": "packages/form_builder_file_picker",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "form_builder_file_picker (profile mode)",
+            "cwd": "packages/form_builder_file_picker",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        }
+    ]
+}

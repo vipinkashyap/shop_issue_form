@@ -30,11 +30,16 @@ dependencies:
   cloud_firestore: ^3.1.8
   cupertino_icons: ^1.0.2
   firebase_core: ^1.12.0
+  firebase_storage: ^10.2.7
   flutter:
     sdk: flutter
   flutter_form_builder: ^7.1.0
+  flutter_riverpod: ^1.0.3
   form_builder_extra_fields: ^7.1.0
+  form_builder_file_picker:
+    path: packages/form_builder_file_picker
   form_builder_validators: ^7.4.0
+  uuid: ^3.0.5
 
 dev_dependencies:
   flutter_lints: ^1.0.0
