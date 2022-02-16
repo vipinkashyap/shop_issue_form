@@ -12,8 +12,8 @@ class StorageApi {
       : firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance,
         firebaseStorage = firebaseStorage ?? FirebaseStorage.instance;
 
-  uploadImageToFirebaseStorage(Uint8List? file, String fileName) {
-    firebaseStorage.ref().child("files/$fileName").putData(file!);
+  uploadImageToFirebaseStorage(Uint8List file, String fileName) {
+    firebaseStorage.ref().child("files/$fileName").putData(file);
   }
 
   writeDataToCloudFireStore(Map<String, dynamic> map) {

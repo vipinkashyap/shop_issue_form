@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_file_picker/form_builder_file_picker.dart';
@@ -45,7 +47,47 @@ class _IssueFormState extends State<IssueForm> {
         'cost': _fbKey.currentState!.value['cost'] as double,
         'resourceRequirements':
             _fbKey.currentState!.value['resource_requirements'] as String,
-        'invoice': _fbKey.currentState!.value['invoice'] as int,
+        'invoiceValue': _fbKey.currentState!.value['invoiceValue'] as int,
+        'customerConcerns':
+            _fbKey.currentState!.value['customerConcerns'] as String,
+        'numManDaysAtSite':
+            _fbKey.currentState!.value['numManDaysAtSite'] as int,
+        'resourceAllocation':
+            _fbKey.currentState!.value['resourceAllocation'] as int,
+        'numDaysResourceIdle':
+            _fbKey.currentState!.value['numDaysResourceIdle'] as int,
+        'manufacturerConcerns':
+            _fbKey.currentState!.value['manufacturerConcerns'] as String,
+        'multipleVisitReasons':
+            _fbKey.currentState!.value['multipleVisitReasons'] as String,
+        'expectedManDaysAtSite':
+            _fbKey.currentState!.value['expectedManDaysAtSite'] as int,
+        'distanceFromPreviousJob':
+            _fbKey.currentState!.value['distanceFromPreviousJob'] as double,
+        'manufacturerServiceCost':
+            _fbKey.currentState!.value['manufacturerServiceCost'] as double,
+        'resourceCompanyEarnings':
+            _fbKey.currentState!.value['resourceCompanyEarnings'] as double,
+        'attachmentBillOfQuantity':
+            _fbKey.currentState!.value['attachmentBillOfQuantity'] as File,
+        'attachmentProjectSection':
+            _fbKey.currentState!.value['attachmentProjectSection'] as File,
+        "numDaysSinceBillSubmission":
+            _fbKey.currentState!.value['numDaysSinceBillSubmission'] as int,
+        'resourceCompanyExpenditure':
+            _fbKey.currentState!.value['resourceCompanyExpenditure'] as double,
+        'attachmentQuotationRevisions':
+            _fbKey.currentState!.value['attachmentQuotationRevisions'] as File,
+        'serviceCostAgainstInvoiceValue': _fbKey
+            .currentState!.value['serviceCostAgainstInvoiceValue'] as double,
+        'receivablesAgainstPurchaseOrder': _fbKey
+            .currentState!.value['receivablesAgainstPurchaseOrder'] as double,
+        'attachmentTechnicalSpecification': _fbKey
+            .currentState!.value['attachmentTechnicalSpecification'] as File,
+        'attachmentClarificationsFromCustomer': _fbKey.currentState!
+            .value['attachmentClarificationsFromCustomer'] as File,
+        'imageAttachment':
+            _fbKey.currentState!.value['imageAttachment'] as File,
       }).then((value) {
         setState(() => _buttonText = 'WRITTEN SUCCESSFULLY');
       });
@@ -166,7 +208,7 @@ class _IssueFormState extends State<IssueForm> {
                     FormBuilderFilePicker(
                       focusNode: _filePickerFocus,
                       name: 'attachments',
-                      previewImages: true,
+                      previewImages: false,
                       allowMultiple: false,
                       maxFiles: 1,
                       onFileLoading: (status) =>
