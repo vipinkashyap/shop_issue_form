@@ -22,15 +22,36 @@ class _IssueFormState extends State<IssueForm> {
   // Form key
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
   // Focus Nodes
-  final FocusNode _customerFocus = FocusNode();
-  final FocusNode _epcContractorFocus = FocusNode();
-  final FocusNode _siteLocationFocus = FocusNode();
-  final FocusNode _equipmentRatingFocus = FocusNode();
-  final FocusNode _issuePriorityFocus = FocusNode();
+  final FocusNode _idFocus = FocusNode();
   final FocusNode _costFocus = FocusNode();
+  final FocusNode _customerFocus = FocusNode();
+  final FocusNode _issuePriorityFocus = FocusNode();
+  final FocusNode _invoiceValueFocus = FocusNode();
+  final FocusNode _siteLocationFocus = FocusNode();
+  final FocusNode _epcContractorFocus = FocusNode();
+  final FocusNode _equipmentRatingFocus = FocusNode();
+  final FocusNode _imageAttachmentFocus = FocusNode();
+  final FocusNode _customerConcernsFocus = FocusNode();
+  final FocusNode _numManDaysAtSiteFocus = FocusNode();
+  final FocusNode _resourceAllocationFocus = FocusNode();
+  final FocusNode _numDaysResourceIdleFocus = FocusNode();
+  final FocusNode _manufacturerConcernsFocus = FocusNode();
+  final FocusNode _multipleVisitReasonsFocus = FocusNode();
   final FocusNode _resourceRequirementsFocus = FocusNode();
-  final FocusNode _invoiceFocus = FocusNode();
-  final FocusNode _filePickerFocus = FocusNode();
+  final FocusNode _expectedManDaysAtSiteFocus = FocusNode();
+  final FocusNode _distanceFromPreviousJobFocus = FocusNode();
+  final FocusNode _manufacturerServiceCostFocus = FocusNode();
+  final FocusNode _resourceCompanyEarningsFocus = FocusNode();
+  final FocusNode _attachmentBillOfQuantityFocus = FocusNode();
+  final FocusNode _attachmentProjectSectionFocus = FocusNode();
+  final FocusNode _numDaysSinceBillSubmissionFocus = FocusNode();
+  final FocusNode _resourceCompanyExpenditureFocus = FocusNode();
+  final FocusNode _attachmentQuotationRevisionsFocus = FocusNode();
+  final FocusNode _serviceCostAgainstInvoiceValueFocus = FocusNode();
+  final FocusNode _receivablesAgainstPurchaseOrderFocus = FocusNode();
+  final FocusNode _attachmentTechnicalSpecificationFocus = FocusNode();
+  final FocusNode _attachmentClarificationsFromCustomerFocus = FocusNode();
+
   final FocusNode _tnsFocus = FocusNode();
 
   _handleSubmit() {
@@ -193,8 +214,8 @@ class _IssueFormState extends State<IssueForm> {
                       keyboardType: TextInputType.number,
                     ),
                     FormBuilderTextField(
-                      focusNode: _invoiceFocus,
-                      name: 'invoice',
+                      focusNode: _invoiceValueFocus,
+                      name: 'invoiceValue',
                       decoration: const InputDecoration(
                         labelText: 'Invoice ID for customer',
                       ),
@@ -205,15 +226,239 @@ class _IssueFormState extends State<IssueForm> {
                       ]),
                       keyboardType: TextInputType.number,
                     ),
+
+                    FormBuilderTextField(
+                      focusNode: _customerConcernsFocus,
+                      decoration:
+                          const InputDecoration(labelText: 'Customer Concerns'),
+                      name: 'customerConcerns',
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.min(context, 3),
+                        FormBuilderValidators.required(context)
+                      ]),
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _numManDaysAtSiteFocus,
+                      name: 'numManDaysAtSite',
+                      decoration: const InputDecoration(
+                        labelText: 'Number of Man Days At Site',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                        FormBuilderValidators.max(context, 100000),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _resourceAllocationFocus,
+                      name: 'resourceAllocation',
+                      decoration: const InputDecoration(
+                        labelText: 'Resource Allocation',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                        FormBuilderValidators.max(context, 100000),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _numDaysResourceIdleFocus,
+                      name: 'numDaysResourceIdle',
+                      decoration: const InputDecoration(
+                        labelText: 'Number of Days Resource Idle',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                        FormBuilderValidators.max(context, 100000),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _manufacturerConcernsFocus,
+                      decoration: const InputDecoration(
+                          labelText: 'Manufacturer Concerns'),
+                      name: 'manufacturerConcerns',
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.min(context, 3),
+                        FormBuilderValidators.required(context)
+                      ]),
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _multipleVisitReasonsFocus,
+                      decoration: const InputDecoration(
+                          labelText: 'Multiple Visit Reasons '),
+                      name: 'multipleVisitReasons',
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.min(context, 3),
+                        FormBuilderValidators.required(context)
+                      ]),
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _expectedManDaysAtSiteFocus,
+                      name: 'expectedManDaysAtSite',
+                      decoration: const InputDecoration(
+                        labelText: 'Expected Man Days At Site',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                        FormBuilderValidators.max(context, 100000),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _distanceFromPreviousJobFocus,
+                      name: 'distanceFromPreviousJob',
+                      decoration: const InputDecoration(
+                        labelText: 'Distance From Previous Job',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _manufacturerServiceCostFocus,
+                      name: 'manufacturerServiceCost',
+                      decoration: const InputDecoration(
+                        labelText: 'Manufacturer Service Cost',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _resourceCompanyEarningsFocus,
+                      name: 'resourceCompanyEarnings',
+                      decoration: const InputDecoration(
+                        labelText: 'Resource Company Earnings',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _numDaysSinceBillSubmissionFocus,
+                      name: 'numDaysSinceBillSubmission',
+                      decoration: const InputDecoration(
+                        labelText: 'Number of Days Since Bill Submission',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _resourceCompanyExpenditureFocus,
+                      name: 'resourceCompanyExpenditure',
+                      decoration: const InputDecoration(
+                        labelText: 'Resource Company Expenditure',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _serviceCostAgainstInvoiceValueFocus,
+                      name: 'serviceCostAgaisntInvoiceValue',
+                      decoration: const InputDecoration(
+                        labelText: 'Service Cost Against Invoice Value',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      focusNode: _receivablesAgainstPurchaseOrderFocus,
+                      name: 'receivableAgainstPurchaseOrder',
+                      decoration: const InputDecoration(
+                        labelText: 'Receivables Against Purchase Order',
+                      ),
+                      valueTransformer: (text) => num.tryParse(text!),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
                     FormBuilderFilePicker(
-                      focusNode: _filePickerFocus,
-                      name: 'attachments',
+                      focusNode: _imageAttachmentFocus,
+                      name: 'imageAttachment',
                       previewImages: false,
                       allowMultiple: false,
                       maxFiles: 1,
                       onFileLoading: (status) =>
                           const CircularProgressIndicator(),
                     ),
+                    FormBuilderFilePicker(
+                      focusNode: _attachmentBillOfQuantityFocus,
+                      name: 'attachmentBillOfQuantity',
+                      previewImages: false,
+                      allowMultiple: false,
+                      maxFiles: 1,
+                      onFileLoading: (status) =>
+                          const CircularProgressIndicator(),
+                    ),
+                    FormBuilderFilePicker(
+                      focusNode: _attachmentProjectSectionFocus,
+                      name: 'attachmentProjectSection',
+                      previewImages: false,
+                      allowMultiple: false,
+                      maxFiles: 1,
+                      onFileLoading: (status) =>
+                          const CircularProgressIndicator(),
+                    ),
+                    FormBuilderFilePicker(
+                      focusNode: _attachmentQuotationRevisionsFocus,
+                      name: 'attachmentQuotationRevisions',
+                      previewImages: false,
+                      allowMultiple: false,
+                      maxFiles: 1,
+                      onFileLoading: (status) =>
+                          const CircularProgressIndicator(),
+                    ),
+                    FormBuilderFilePicker(
+                      focusNode: _attachmentTechnicalSpecificationFocus,
+                      name: 'attachmentTechnicalSpecification',
+                      previewImages: false,
+                      allowMultiple: false,
+                      maxFiles: 1,
+                      onFileLoading: (status) =>
+                          const CircularProgressIndicator(),
+                    ),
+                    FormBuilderFilePicker(
+                      focusNode: _attachmentClarificationsFromCustomerFocus,
+                      name: 'attachmentClarificationsFromCustomer',
+                      previewImages: false,
+                      allowMultiple: false,
+                      maxFiles: 1,
+                      onFileLoading: (status) =>
+                          const CircularProgressIndicator(),
+                    ),
+
                     FormBuilderCheckbox(
                       focusNode: _tnsFocus,
                       validator: FormBuilderValidators.required(context),
