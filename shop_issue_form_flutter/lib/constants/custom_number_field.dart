@@ -21,6 +21,8 @@ class CustomNumberField extends StatelessWidget {
       focusNode: focusName,
       name: name,
       decoration: InputDecoration(
+        labelStyle: TextStyle(fontWeight: FontWeight.w500),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         labelText: labelTextName,
       ),
       valueTransformer: (text) => num.tryParse(text!),
