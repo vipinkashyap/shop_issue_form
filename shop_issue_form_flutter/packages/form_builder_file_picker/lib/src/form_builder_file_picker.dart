@@ -197,7 +197,6 @@ class _FormBuilderFilePickerState
 
     if (resultList != null) {
       setState(() => _files = [..._files, ...resultList!.files]);
-      // TODO: Pick only remaining number
       field.didChange(_files);
     }
   }
