@@ -132,338 +132,294 @@ class _IssueFormState extends State<IssueForm> {
               child: Padding(
                 padding: const EdgeInsets.all(40.0),
                 child: SingleChildScrollView(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CustomTextField(
-                            focusNode: _epcContractorFocus,
-                            name: 'epcContractor',
-                            labelTextName: 'EPC Contractor'),
-
-                        CustomTextField(
-                            focusNode: _customerFocus,
-                            name: 'customerFocues',
-                            labelTextName: 'Customer Focus'),
-
-                        CustomTextField(
-                            focusNode: _siteLocationFocus,
-                            name: 'siteLocation',
-                            labelTextName: 'Site Location'),
-                        FormBuilderRatingBar(
-                          focusNode: _equipmentRatingFocus,
-                          validator: FormBuilderValidators.required(context),
-                          decoration: const InputDecoration(
-                              labelText: 'Equipment Rating'),
-                          name: 'equipmentRating',
-                          initialValue: 0.0,
-                          maxRating: 5.0,
-                        ),
-                        FormBuilderChoiceChip(
-                          focusNode: _issuePriorityFocus,
-                          initialValue: 'low',
-                          name: 'issuePriority',
-                          decoration: const InputDecoration(
-                            labelText: 'Choose Issue Priority',
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SizedBox(
+                            height: 15,
                           ),
-                          options: const [
-                            FormBuilderFieldOption(
-                                value: 'low', child: Text('Low')),
-                            FormBuilderFieldOption(
-                                value: 'med', child: Text('Med')),
-                            FormBuilderFieldOption(
-                                value: 'high', child: Text('High')),
-                          ],
-                        ),
-
-                        CustomTextField(
-                          focusNode: _resourceRequirementsFocus,
-                          name: 'resourceRequirements',
-                          labelTextName: 'Resource Requirements',
-                          maxLines: 4,
-                        ),
-
-                        CustomNumberField(
-                            focusName: _costFocus,
-                            name: 'cost',
-                            labelTextName: 'Enter Cost'),
-
-                        CustomNumberField(
-                            focusName: _invoiceValueFocus,
-                            name: 'invoiceValue',
-                            labelTextName: 'Enter Invoice Value'),
-
-                        CustomTextField(
-                          focusNode: _customerConcernsFocus,
-                          name: 'customerConcerns',
-                          labelTextName: 'Enter Customer Concerns',
-                          maxLines: 4,
-                        ),
-
-                        CustomNumberField(
-                            focusName: _numManDaysAtSiteFocus,
-                            name: 'numManDaysAtSite',
-                            labelTextName: 'Number of Man Days At Site'),
-
-                        CustomNumberField(
-                            focusName: _resourceAllocationFocus,
-                            name: 'resouceAllocation',
-                            labelTextName: 'Enter Resource Allocation'),
-
-                        CustomNumberField(
-                            focusName: _numDaysResourceIdleFocus,
-                            name: 'numDaysResourceIdle',
-                            labelTextName: 'Number of Days Resource Idle'),
-
-                        CustomTextField(
-                            focusNode: _manufacturerConcernsFocus,
-                            name: 'manufacturerConcerns',
-                            labelTextName: 'Enter Manufacturer Concerns'),
-                        // FormBuilderTextField(
-                        //   focusNode: _multipleVisitReasonsFocus,
-                        //   decoration: const InputDecoration(
-                        //       labelText: 'Multiple Visit Reasons '),
-                        //   name: 'multipleVisitReasons',
-                        //   validator: FormBuilderValidators.compose([
-                        //     FormBuilderValidators.min(context, 3),
-                        //     FormBuilderValidators.required(context)
-                        //   ]),
-                        // ),
-                        CustomTextField(
-                          focusNode: _multipleVisitReasonsFocus,
-                          name: 'multipleVisitReasons',
-                          labelTextName: 'Multiple Visit Reasons',
-                          maxLines: 4,
-                        ),
-                        // FormBuilderTextField(
-                        //   focusNode: _expectedManDaysAtSiteFocus,
-                        //   name: 'expectedManDaysAtSite',
-                        //   decoration: const InputDecoration(
-                        //     labelText: 'Expected Man Days At Site',
-                        //   ),
-                        //   valueTransformer: (text) => num.tryParse(text!),
-                        //   validator: FormBuilderValidators.compose([
-                        //     FormBuilderValidators.required(context),
-                        //     FormBuilderValidators.numeric(context),
-                        //     FormBuilderValidators.max(context, 100000),
-                        //   ]),
-                        //   keyboardType: TextInputType.number,
-                        // ),
-                        CustomNumberField(
-                            focusName: _expectedManDaysAtSiteFocus,
-                            name: 'expectedManDaysAtSite',
-                            labelTextName: 'Expected Man Days At Site'),
-                        // FormBuilderTextField(
-                        //   focusNode: _distanceFromPreviousJobFocus,
-                        //   name: 'distanceFromPreviousJob',
-                        //   decoration: const InputDecoration(
-                        //     labelText: 'Distance From Previous Job',
-                        //   ),
-                        //   valueTransformer: (text) => num.tryParse(text!),
-                        //   validator: FormBuilderValidators.compose([
-                        //     FormBuilderValidators.required(context),
-                        //     FormBuilderValidators.numeric(context),
-                        //   ]),
-                        //   keyboardType: TextInputType.number,
-                        // ),
-                        CustomNumberField(
-                            focusName: _distanceFromPreviousJobFocus,
-                            name: 'distanceFromPreviousJob',
-                            labelTextName: 'Distance from Previous Job'),
-                        // FormBuilderTextField(
-                        //   focusNode: _manufacturerServiceCostFocus,
-                        //   name: 'manufacturerServiceCost',
-                        //   decoration: const InputDecoration(
-                        //     labelText: 'Manufacturer Service Cost',
-                        //   ),
-                        //   valueTransformer: (text) => num.tryParse(text!),
-                        //   validator: FormBuilderValidators.compose([
-                        //     FormBuilderValidators.required(context),
-                        //     FormBuilderValidators.numeric(context),
-                        //   ]),
-                        //   keyboardType: TextInputType.number,
-                        // ),
-                        CustomNumberField(
-                            focusName: _manufacturerServiceCostFocus,
-                            name: 'manufacturerServiceCost',
-                            labelTextName: 'Manufacturer Service Cost'),
-                        // FormBuilderTextField(
-                        //   focusNode: _resourceCompanyEarningsFocus,
-                        //   name: 'resourceCompanyEarnings',
-                        //   decoration: const InputDecoration(
-                        //     labelText: 'Resource Company Earnings',
-                        //   ),
-                        //   valueTransformer: (text) => num.tryParse(text!),
-                        //   validator: FormBuilderValidators.compose([
-                        //     FormBuilderValidators.required(context),
-                        //     FormBuilderValidators.numeric(context),
-                        //   ]),
-                        //   keyboardType: TextInputType.number,
-                        // ),
-                        CustomNumberField(
-                            focusName: _resourceCompanyEarningsFocus,
-                            name: 'resourceCompanyEarningsFocus',
-                            labelTextName: 'Resource Companty Earnings'),
-                        CustomNumberField(
-                            focusName: _numDaysSinceBillSubmissionFocus,
-                            name: 'numDaysSinceBillSubmission',
-                            labelTextName:
-                                'Number of Days Since Bill Submission'),
-                        // FormBuilderTextField(
-                        //   focusNode: _resourceCompanyExpenditureFocus,
-                        //   name: 'resourceCompanyExpenditure',
-                        //   decoration: const InputDecoration(
-                        //     labelText: 'Resource Company Expenditure',
-                        //   ),
-                        //   valueTransformer: (text) => num.tryParse(text!),
-                        //   validator: FormBuilderValidators.compose([
-                        //     FormBuilderValidators.required(context),
-                        //     FormBuilderValidators.numeric(context),
-                        //   ]),
-                        //   keyboardType: TextInputType.number,
-                        // ),
-                        CustomNumberField(
-                            focusName: _resourceCompanyExpenditureFocus,
-                            name: 'resourceCompanyExpenditureFocus',
-                            labelTextName: 'Resource Company Expenditure'),
-                        // FormBuilderTextField(
-                        //   focusNode: _serviceCostAgainstInvoiceValueFocus,
-                        //   name: 'serviceCostAgaisntInvoiceValue',
-                        //   decoration: const InputDecoration(
-                        //     labelText: 'Service Cost Against Invoice Value',
-                        //   ),
-                        //   valueTransformer: (text) => num.tryParse(text!),
-                        //   validator: FormBuilderValidators.compose([
-                        //     FormBuilderValidators.required(context),
-                        //     FormBuilderValidators.numeric(context),
-                        //   ]),
-                        //   keyboardType: TextInputType.number,
-                        // ),
-                        CustomNumberField(
-                            focusName: _serviceCostAgainstInvoiceValueFocus,
-                            name: 'serviceCostAgainstInvoiceValueFocus',
-                            labelTextName:
-                                'Service Cost Against Invoice Value'),
-                        // FormBuilderTextField(
-                        //   focusNode: _receivablesAgainstPurchaseOrderFocus,
-                        //   name: 'receivableAgainstPurchaseOrder',
-                        //   decoration: const InputDecoration(
-                        //     labelText: 'Receivables Against Purchase Order',
-                        //   ),
-                        //   valueTransformer: (text) => num.tryParse(text!),
-                        //   validator: FormBuilderValidators.compose([
-                        //     FormBuilderValidators.required(context),
-                        //     FormBuilderValidators.numeric(context),
-                        //   ]),
-                        //   keyboardType: TextInputType.number,
-                        // ),
-                        CustomNumberField(
-                            focusName: _receivablesAgainstPurchaseOrderFocus,
-                            name: 'receivablesAgainstPurchaseOrderFocus',
-                            labelTextName: 'Receivable Against Purchase Order'),
-                        // FormBuilderFilePicker(
-                        //   focusNode: _imageAttachmentFocus,
-                        //   name: 'imageAttachment',
-                        //   previewImages: false,
-                        //   allowMultiple: false,
-                        //   maxFiles: 1,
-                        //   onFileLoading: (status) =>
-                        //       const CircularProgressIndicator(),
-                        // ),
-                        CustomFilePicker(
+                          CustomTextField(
+                              focusNode: _epcContractorFocus,
+                              name: 'epcContractor',
+                              labelTextName: 'EPC Contractor'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomTextField(
+                              focusNode: _customerFocus,
+                              name: 'customerFocues',
+                              labelTextName: 'Customer Focus'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomTextField(
+                              focusNode: _siteLocationFocus,
+                              name: 'siteLocation',
+                              labelTextName: 'Site Location'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          FormBuilderRatingBar(
+                            focusNode: _equipmentRatingFocus,
+                            validator: FormBuilderValidators.required(context),
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                labelText: 'Equipment Rating'),
+                            name: 'equipmentRating',
+                            initialValue: 0.0,
+                            maxRating: 5.0,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          FormBuilderChoiceChip(
+                            backgroundColor: Colors.grey[300],
+                            selectedColor: Colors.blue[400],
+                            elevation: 2,
+                            padding: EdgeInsets.all(8),
+                            focusNode: _issuePriorityFocus,
+                            initialValue: 'low',
+                            name: 'issuePriority',
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              labelText: 'Choose Issue Priority',
+                            ),
+                            spacing: 12,
+                            options: const [
+                              FormBuilderFieldOption(
+                                  value: 'low', child: Text('Low')),
+                              FormBuilderFieldOption(
+                                  value: 'med', child: Text('Med')),
+                              FormBuilderFieldOption(
+                                  value: 'high', child: Text('High')),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomTextField(
+                            focusNode: _resourceRequirementsFocus,
+                            name: 'resourceRequirements',
+                            labelTextName: 'Resource Requirements',
+                            maxLines: 4,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _costFocus,
+                              name: 'cost',
+                              labelTextName: 'Enter Cost'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _invoiceValueFocus,
+                              name: 'invoiceValue',
+                              labelTextName: 'Enter Invoice Value'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomTextField(
+                            focusNode: _customerConcernsFocus,
+                            name: 'customerConcerns',
+                            labelTextName: 'Enter Customer Concerns',
+                            maxLines: 4,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _numManDaysAtSiteFocus,
+                              name: 'numManDaysAtSite',
+                              labelTextName: 'Number of Man Days At Site'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _resourceAllocationFocus,
+                              name: 'resouceAllocation',
+                              labelTextName: 'Enter Resource Allocation'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _numDaysResourceIdleFocus,
+                              name: 'numDaysResourceIdle',
+                              labelTextName: 'Number of Days Resource Idle'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomTextField(
+                              focusNode: _manufacturerConcernsFocus,
+                              name: 'manufacturerConcerns',
+                              labelTextName: 'Enter Manufacturer Concerns'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomTextField(
+                            focusNode: _multipleVisitReasonsFocus,
+                            name: 'multipleVisitReasons',
+                            labelTextName: 'Multiple Visit Reasons',
+                            maxLines: 4,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _expectedManDaysAtSiteFocus,
+                              name: 'expectedManDaysAtSite',
+                              labelTextName: 'Expected Man Days At Site'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _distanceFromPreviousJobFocus,
+                              name: 'distanceFromPreviousJob',
+                              labelTextName: 'Distance from Previous Job'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _manufacturerServiceCostFocus,
+                              name: 'manufacturerServiceCost',
+                              labelTextName: 'Manufacturer Service Cost'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _resourceCompanyEarningsFocus,
+                              name: 'resourceCompanyEarningsFocus',
+                              labelTextName: 'Resource Companty Earnings'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _numDaysSinceBillSubmissionFocus,
+                              name: 'numDaysSinceBillSubmission',
+                              labelTextName:
+                                  'Number of Days Since Bill Submission'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _resourceCompanyExpenditureFocus,
+                              name: 'resourceCompanyExpenditureFocus',
+                              labelTextName: 'Resource Company Expenditure'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _serviceCostAgainstInvoiceValueFocus,
+                              name: 'serviceCostAgainstInvoiceValueFocus',
+                              labelTextName:
+                                  'Service Cost Against Invoice Value'),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomNumberField(
+                              focusName: _receivablesAgainstPurchaseOrderFocus,
+                              name: 'receivablesAgainstPurchaseOrderFocus',
+                              labelTextName:
+                                  'Receivable Against Purchase Order'),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Divider(
+                            thickness: 2,
+                            color: Colors.black,
+                          ),
+                          Text(
+                            'ATTACHMENTS',
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          CustomFilePicker(
                             focusNode: _imageAttachmentFocus,
-                            name: 'imageAttachment'),
-                        // FormBuilderFilePicker(
-                        //   focusNode: _attachmentBillOfQuantityFocus,
-                        //   name: 'attachmentBillOfQuantity',
-                        //   previewImages: false,
-                        //   allowMultiple: false,
-                        //   maxFiles: 1,
-                        //   onFileLoading: (status) =>
-                        //       const CircularProgressIndicator(),
-                        // ),
-                        CustomFilePicker(
+                            name: 'imageAttachment',
+                            labelTextName: 'Image Attachment',
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomFilePicker(
                             focusNode: _attachmentBillOfQuantityFocus,
-                            name: 'attachmentBillOfQuantity'),
-                        // FormBuilderFilePicker(
-                        //   focusNode: _attachmentProjectSectionFocus,
-                        //   name: 'attachmentProjectSection',
-                        //   previewImages: false,
-                        //   allowMultiple: false,
-                        //   maxFiles: 1,
-                        //   onFileLoading: (status) =>
-                        //       const CircularProgressIndicator(),
-                        // ),
-                        CustomFilePicker(
+                            name: 'attachmentBillOfQuantity',
+                            labelTextName: 'Attachment Bill Quantity',
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomFilePicker(
                             focusNode: _attachmentProjectSectionFocus,
-                            name: 'attachmentProjectSectionFocus'),
-                        // FormBuilderFilePicker(
-                        //   focusNode: _attachmentQuotationRevisionsFocus,
-                        //   name: 'attachmentQuotationRevisions',
-                        //   previewImages: false,
-                        //   allowMultiple: false,
-                        //   maxFiles: 1,
-                        //   onFileLoading: (status) =>
-                        //       const CircularProgressIndicator(),
-                        // ),
-                        CustomFilePicker(
+                            name: 'attachmentProjectSectionFocus',
+                            labelTextName: 'Attachment Project Section',
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomFilePicker(
                             focusNode: _attachmentQuotationRevisionsFocus,
-                            name: 'attachmentQuotationRevisionsFocus'),
-                        // FormBuilderFilePicker(
-                        //   focusNode: _attachmentTechnicalSpecificationFocus,
-                        //   name: 'attachmentTechnicalSpecification',
-                        //   previewImages: false,
-                        //   allowMultiple: false,
-                        //   maxFiles: 1,
-                        //   onFileLoading: (status) =>
-                        //       const CircularProgressIndicator(),
-                        // ),
-                        CustomFilePicker(
+                            name: 'attachmentQuotationRevisionsFocus',
+                            labelTextName: 'Attachment Quotation Revision',
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomFilePicker(
                             focusNode: _attachmentTechnicalSpecificationFocus,
-                            name: 'attachmentTechnicalSpecificationFocus'),
-                        // FormBuilderFilePicker(
-                        //   focusNode: _attachmentClarificationsFromCustomerFocus,
-                        //   name: 'attachmentClarificationsFromCustomer',
-                        //   previewImages: false,
-                        //   allowMultiple: false,
-                        //   maxFiles: 1,
-                        //   onFileLoading: (status) =>
-                        //       const CircularProgressIndicator(),
-                        // ),
-                        CustomFilePicker(
+                            name: 'attachmentTechnicalSpecificationFocus',
+                            labelTextName:
+                                'Attachment Technical Specification Focus',
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomFilePicker(
                             focusNode:
                                 _attachmentClarificationsFromCustomerFocus,
-                            name: 'attachmentClarificationsFromCustomerFocus'),
-
-                        FormBuilderCheckbox(
-                          focusNode: _tnsFocus,
-                          validator: FormBuilderValidators.required(context),
-                          name: 'accept_terms',
-                          initialValue: false,
-                          title: RichText(
-                            text: const TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'I have read and agree to the ',
-                                  style: TextStyle(color: Colors.black),
-                                ),
-                                TextSpan(
-                                  text: 'Terms and Conditions',
-                                  style: TextStyle(color: Colors.blue),
-                                ),
-                              ],
+                            name: 'attachmentClarificationsFromCustomerFocus',
+                            labelTextName:
+                                'Attachment Clarification From Customer',
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          FormBuilderCheckbox(
+                            focusNode: _tnsFocus,
+                            validator: FormBuilderValidators.required(context),
+                            name: 'accept_terms',
+                            initialValue: false,
+                            title: RichText(
+                              text: const TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'I have read and agree to the ',
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  TextSpan(
+                                    text: 'Terms and Conditions',
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 20),
-                        MaterialButton(
-                          color: Theme.of(context).primaryColor,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(_buttonText),
-                          ),
-                          onPressed: () => _handleSubmit(),
-                        )
-                      ]),
+                          const SizedBox(height: 20),
+                          MaterialButton(
+                            color: Theme.of(context).primaryColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(_buttonText),
+                            ),
+                            onPressed: () => _handleSubmit(),
+                          )
+                        ]),
+                  ),
                 ),
               ),
             ),
