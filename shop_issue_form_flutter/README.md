@@ -1,18 +1,13 @@
 # shop_issue_form_flutter
 
-https://mat-wright.medium.com/connecting-a-flutter-web-form-to-google-cloud-firestore-f6bf7aa28f99
+A flutter app to help track maintenance issues. This app was originally written for a client and being saved as a starting point for other apps
 
-A new Flutter project.
+## App Demo
 
-## Getting Started
+Live Demo - [Web App](https://shop-issue-form-flutter.web.app/#/)
 
-This project is a starting point for a Flutter application.
+![Screen Shot 2022-06-08 at 3 45 42 PM](https://user-images.githubusercontent.com/16275252/172729913-4a1fd13d-4da4-45dc-9a2e-3dfcd5404cc1.png)
 
-A few resources to get you started if this is your first Flutter project:
+Data is saved to firestore 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screen Shot 2022-06-08 at 3 46 49 PM](https://user-images.githubusercontent.com/16275252/172730977-5914d428-5aef-4c3c-b2b9-c4eae130caba.png)
